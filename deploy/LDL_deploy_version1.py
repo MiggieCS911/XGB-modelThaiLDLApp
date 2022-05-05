@@ -62,7 +62,7 @@ if st.button('Calculate', key = 'calculate button'):
 ### explaination
 #sidebar
 st.sidebar.header('XGB-ThaiLDL model')
-txt2 = """Dr. Padeomwut Teerawongsakul inspires this project. The dataset for training and testing the models to calculate indirect LDL cholesterol was from Vajira Hospital's lipid data which has 54144 profiles. We (VBaM4H) experimented with many machine learning models on this dataset. The results show that the best is the Extreme Gradient Boosting (XGBoost) model. All experiments, model development, and web application are performed by [Dr. Wanjak Pongsittisak](mailto:wanjak@nmu.ac.th). The complete experiment method and results will be prepared and published soon. However, The performance of models is partially reported. For more information or any suggestion, don't hesitate to get in touch with [us](mailto:wanjak@nmu.ac.th)."""
+txt2 = """Dr. Padeomwut Teerawongsakul inspires this project. The dataset for training and testing the models to calculate indirect LDL cholesterol was from Vajira Hospital's lipid data which has 54144 profiles. We ([VBaM4H](https://www.vbam4h.com/)) experimented with many machine learning models on this dataset. The results show that the best is the Extreme Gradient Boosting (XGBoost) model. All experiments, model development, and web application are performed by [Dr. Wanjak Pongsittisak](mailto:wanjak@nmu.ac.th). The complete experiment method and results will be prepared and published soon. However, The performance of models is partially reported. For more information or any suggestion, don't hesitate to get in touch with [us](mailto:wanjak@nmu.ac.th)."""
 st.sidebar.write(txt2)
 st.sidebar.write('Version: Beta')
 st.sidebar.markdown('&copy; 2022 VBaM4H All Rights Reserved')
