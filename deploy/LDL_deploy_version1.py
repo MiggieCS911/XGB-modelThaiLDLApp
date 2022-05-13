@@ -11,20 +11,31 @@ import numpy as np
 import xgboost as xgb
 
 #load model
-xgbDLP3v = xgb.XGBRegressor()
-xgbDLP3v.load_model('XGBmodel_DLP.json')
-xgbDLP2v = xgb.XGBRegressor()
-xgbDLP2v.load_model('XGBmodel_DLP2V.json')
+@st.cache(ttl=60*60*12) #ttl -> time limit cache (second), max_entries -> number limit
+def load_xgbDLP3v():
+    xgb3v = xgb.XGBRegressor()
+    xgb3v.load_model('XGBmodel_DLP.json')
+    return xgb3v
+# xgbDLP3v = xgb.XGBRegressor()
+# xgbDLP3v.load_model('XGBmodel_DLP.json')
+@st.cache(ttl=60*60*12)
+def load_xgbDLP2v():
+    xgb2v = xgb.XGBRegressor()
+    xgb2v.load_model('XGBmodel_DLP2V.json')
+    return xgb2v
+# xgbDLP2v = xgb.XGBRegressor()
+# xgbDLP2v.load_model('XGBmodel_DLP2V.json')
+
+xgbDLP3v = load_xgbDLP3v()
+xgbDLP2v = load_xgbDLP2v()
 
 #predict LDL function
 #3variables: Chol,HDL, TG
-@st.cache
 def fit_xgbDLP3v(values):
     res = xgbDLP3v.predict(values)
     return res[0]
 
 #2variables: Chol, Tg
-@st.cache
 def fit_xgbDLP2v(values):
     res = xgbDLP2v.predict(values)
     return res[0]
