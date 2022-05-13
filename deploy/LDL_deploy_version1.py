@@ -12,22 +12,24 @@ import xgboost as xgb
 
 #load model
 # @st.cache(ttl=60*60*12) #ttl -> time limit cache (second), max_entries -> number limit
-# def load_xgbDLP3v():
-#     xgb3v = xgb.XGBRegressor()
-#     xgb3v.load_model('XGBmodel_DLP.json')
-#     return xgb3v
-xgbDLP3v = xgb.XGBRegressor()
-xgbDLP3v.load_model('XGBmodel_DLP.json')
+@st.experimental_singleton #new feature singleton/ memo (for data)
+def load_xgbDLP3v():
+    xgb3v = xgb.XGBRegressor()
+    xgb3v.load_model('XGBmodel_DLP.json')
+    return xgb3v
+# xgbDLP3v = xgb.XGBRegressor()
+# xgbDLP3v.load_model('XGBmodel_DLP.json')
 # @st.cache(ttl=60*60*12)
-# def load_xgbDLP2v():
-#     xgb2v = xgb.XGBRegressor()
-#     xgb2v.load_model('XGBmodel_DLP2V.json')
-#     return xgb2v
-xgbDLP2v = xgb.XGBRegressor()
-xgbDLP2v.load_model('XGBmodel_DLP2V.json')
+@st.experimental_singleton
+def load_xgbDLP2v():
+    xgb2v = xgb.XGBRegressor()
+    xgb2v.load_model('XGBmodel_DLP2V.json')
+    return xgb2v
+# xgbDLP2v = xgb.XGBRegressor()
+# xgbDLP2v.load_model('XGBmodel_DLP2V.json')
 
-# xgbDLP3v = load_xgbDLP3v()
-# xgbDLP2v = load_xgbDLP2v()
+xgbDLP3v = load_xgbDLP3v()
+xgbDLP2v = load_xgbDLP2v()
 
 #predict LDL function
 #3variables: Chol,HDL, TG
